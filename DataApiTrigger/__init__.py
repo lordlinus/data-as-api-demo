@@ -1,6 +1,10 @@
+import logging
 import os
 
 import nest_asyncio
+
+from .cosmos_data import CosmosDB
+from .fast_api_app import app
 
 nest_asyncio.apply()
 
@@ -8,9 +12,6 @@ import azure.functions as func
 from azure.functions import HttpRequest
 from fastapi import FastAPI, HTTPException
 from nicegui import ui
-
-from .cosmos_data import CosmosDB
-from .fast_api_app import app
 
 # <read env setting for Cosmos DB>
 endpoint = os.getenv("testcosmos01_ENDPOINT")
