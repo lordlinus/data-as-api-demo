@@ -11,6 +11,7 @@ from fastapi import FastAPI, HTTPException
 
 from .cosmos_data import CosmosDB
 from .fast_api_app import app
+from .open_ai_davinci import OpenAIData
 from .purview_data import PurviewData
 
 # <read env setting for Cosmos DB>
@@ -23,9 +24,16 @@ client_secret = os.getenv("client_secret")
 tenant_id = os.getenv("tenant_id")
 reference_name_purview = os.getenv("reference_name_purview")
 
+api_type = os.getenv("oa_api_type")
+api_base = os.getenv("oa_api_base")
+api_version = os.getenv("oa_api_version")
+api_key = os.getenv("oa_api_key")
+
 cosmos_data = CosmosDB(endpoint=endpoint, key=key, database_name=database_name)
 
 purview_data = PurviewData(client_id, client_secret, tenant_id, reference_name_purview)
+
+open_ai_davinci = OpenAIData(api_type, api_base, api_version, api_key)
 
 
 @app.get("/")
@@ -61,6 +69,11 @@ async def sampleAPI(customerid):
 @app.get("/catalog/{keyword}")
 def catalog(keyword):
     return purview_data.get_search_results(keyword)
+
+
+@app.get("/davinci/{prompt}")
+def catalog(prompt):
+    return open_ai_davinci.get_openai_response(prompt)["choices"][0]["text"]
 
 
 async def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
