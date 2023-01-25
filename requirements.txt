@@ -7,5 +7,11 @@ fastapi
 azure-cosmos
 aiohttp
 nest_asyncio
-nicegui
+# nicegui
 # engineio
+azure-identity
+azure-purview-scanning
+azure-purview-administration
+azure-purview-catalog
+azure-purview-account
+azure-core
