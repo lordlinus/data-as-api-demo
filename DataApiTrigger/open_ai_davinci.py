@@ -3,11 +3,6 @@
 
 import openai
 
-# openai.api_type = "azure"
-# openai.api_base = "https://ssattirajuopenai01.openai.azure.com/"
-# openai.api_version = "2022-12-01"
-# openai.api_key = os.getenv("OPENAI_API_KEY")
-
 
 class OpenAIData:
     def __init__(self, api_type, api_base, api_version, api_key):
@@ -25,7 +20,7 @@ class OpenAIData:
             engine="davinci-v3",
             prompt=prompt,
             temperature=0.7,
-            max_tokens=60,
+            max_tokens=500,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0,

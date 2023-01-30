@@ -22,6 +22,14 @@ You can **read items** by passing Options id e.g. LA-SG_21086094.
 ## API
 
 A sample api response that connects all the above apis e.g. LA-SG_20746123
+
+## Catalog
+
+Search Purview Catalog e.g. 'silver'
+
+## OpenAI
+
+Sample OpenAI response based on  Large Language model e.g. 'Sample PySpark code to process csv data'
 """
 tags_metadata = [
     {
@@ -44,13 +52,21 @@ tags_metadata = [
         "name": "api",
         "description": "Sample API try with LA-SG_166923771",
     },
+    {
+        "name": "catalog",
+        "description": "Search for a keyword e.g. 'silver'",
+    },
+    {
+        "name": "openai",
+        "description": "Sample OpenAI response e.g. 'Sample PySpark code to process csv data'",
+    },
 ]
 
 
 app = FastAPI(
     title="Sample API for testing",
     description=description,
-    version="0.0.1",
+    version="0.0.2",
     # terms_of_service="http://example.com/terms/",
     # contact={
     #     "name": "You know me",
